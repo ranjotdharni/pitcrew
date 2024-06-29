@@ -9,7 +9,9 @@ const app: Express = express()
 
 app.use(express.static(process.env.STATIC_PATH))
 
-app.get("/", (req: Request, res: Response) => {
+// CATCH-ALL ROUTE, MUST COME LAST, AFTER EVERYTHING!!!!!!!!
+// (Also, this is what is allowing your BrowserRouter in the React app to work!!!)
+app.get("*", (req: Request, res: Response) => {
     res.sendFile(process.env.DIST_PATH)
 })
 
